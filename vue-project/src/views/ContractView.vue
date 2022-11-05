@@ -11,6 +11,7 @@ const { getProfile } = useQiita();
 const { pinJSONToIPFS } = useIpfs();
 
 const qiitaProfile = ref<any>();
+const ipfsUrl = ref<string>("");
 
 const getQiitaProfile = async (userName: string) => {
   qiitaProfile.value = await getProfile(userName).catch(err => {
@@ -18,11 +19,14 @@ const getQiitaProfile = async (userName: string) => {
   });
 };
 const uploadToIpfs = async () => {
-  await pinJSONToIPFS(qiitaProfile.value).catch(err => {
+  const res = await pinJSONToIPFS(qiitaProfile.value).catch(err => {
     console.error(err);
   });
+  if (res) {
+    ipfsUrl.value = res;
+  }
 }
-const connect = async () => {
+const connectAndMint = async () => {
   if ((window as any).ethereum) {
     const ethereum = (window as any).ethereum;
     const acconts = await ethereum.request({ method: "eth_requestAccounts" }).catch(err => {
@@ -35,7 +39,7 @@ const connect = async () => {
     const signer = await provider.getSigner();
     const Contract = await new ethers.Contract(contractAddress, abi, signer) as Contract_abi;
     const recepientAddress = "0x5a10d152072832823c38e964E382CD22C00a8d7E";
-    const tokenUri = "https://gateway.pinata.cloud/ipfs/QmTFCG9UPu5gfa2edbXEZVcr6BLu8NLzV14DWCLsedNFUd";
+    const tokenUri = ipfsUrl.value;
 
     const receipt = await Contract.mintNFT(recepientAddress, tokenUri);
     console.log(receipt);
@@ -50,7 +54,7 @@ const connect = async () => {
 
 <template>
   {{ qiitaProfile }}
-  <button @click="connect">connect</button>
+  <button @click="connectAndMint">connectAndMint</button>
   <button @click="getQiitaProfile('3tomcha')">getName</button>
   <button @click="uploadToIpfs">uploadToIpfs</button>
 </template>
