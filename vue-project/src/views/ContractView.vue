@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ethers } from "ethers";
-import type { Web3Provider } from "ethers-providers";
 import abi from "@/abi/contract_abi.json";
 import type { Contract_abi } from "@/types/ethers-contracts/index";
 import useQiita from "@/composable/use-qiita";
