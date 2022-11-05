@@ -5,14 +5,23 @@ import abi from "@/abi/contract_abi.json";
 import type { Contract_abi } from "@/types/ethers-contracts/index";
 import useQiita from "@/composable/use-qiita";
 import { ref } from "vue";
+import useIpfs from "@/composable/use-ipfs";
 
 const { getProfile } = useQiita();
+const { pinJSONToIPFS } = useIpfs();
+
 const qiitaProfile = ref<any>();
+
 const getQiitaProfile = async (userName: string) => {
   qiitaProfile.value = await getProfile(userName).catch(err => {
     console.error(err);
   });
 };
+const uploadToIpfs = async () => {
+  await pinJSONToIPFS(qiitaProfile.value).catch(err => {
+    console.error(err);
+  });
+}
 const connect = async () => {
   if ((window as any).ethereum) {
     const ethereum = (window as any).ethereum;
@@ -43,10 +52,7 @@ const connect = async () => {
   {{ qiitaProfile }}
   <button @click="connect">connect</button>
   <button @click="getQiitaProfile('3tomcha')">getName</button>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <h2>aa</h2>
-  </div>
+  <button @click="uploadToIpfs">uploadToIpfs</button>
 </template>
 
 <style>
