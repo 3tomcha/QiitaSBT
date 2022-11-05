@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ethers } from "ethers";
+import abi from "@/abi/contract_abi.json";
+import type { Contract_abi } from "@/types/ethers-contracts/index";
 
 if ((window as any).ethereum) {
   const ethereum = (window as any).ethereum;
@@ -6,6 +9,15 @@ if ((window as any).ethereum) {
     console.error(err);
   });
   console.log(acconts);
+
+  const contractAddress = "0xbA3E9C379eAB31f1F98dD9Bf0d78faFe5b2Fe890";
+  const provider = new ethers.providers.Web3Provider(ethereum);
+  const signer = await provider.getSigner();
+  const Contract = await new ethers.Contract(contractAddress, abi, signer) as Contract_abi;
+  const name = await Contract.name().catch(err => {
+    console.error(err);
+  });
+  console.log(name);
 }
 </script>
 
