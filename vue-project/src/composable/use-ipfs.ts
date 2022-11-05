@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function useIpfs() {
 
-    const pinJSONToIPFS = async () => {
+    const pinJSONToIPFS = async (content: Object) => {
         const data = JSON.stringify({
             "pinataOptions": {
                 "cidVersion": 1
@@ -14,9 +14,7 @@ export default function useIpfs() {
                     "customKey2": "customValue2"
                 }
             },
-            "pinataContent": {
-                "somekey": "somevalue"
-            }
+            "pinataContent": content
         });
 
         const config = {
