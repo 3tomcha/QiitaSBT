@@ -27,9 +27,13 @@ export default function useIpfs() {
             },
             data: data
         };
-        const res = await axios(config);
-        console.log(res);
-        return res;
+        const res: any = await axios(config).catch(err => {
+            console.error(err);
+        });
+        if (res) {
+            console.log(res);
+            return res;
+        }
     }
 
     return {

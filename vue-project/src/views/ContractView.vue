@@ -6,9 +6,11 @@ import type { Contract_abi } from "@/types/ethers-contracts/index";
 import useQiita from "@/composable/use-qiita";
 import { ref } from "vue";
 import useIpfs from "@/composable/use-ipfs";
+import useMetaData from "@/composable/use-metadata";
 
 const { getProfile } = useQiita();
 const { pinJSONToIPFS } = useIpfs();
+const { formatToMetaData } = useMetaData();
 
 const qiitaProfile = ref<any>();
 const ipfsUrl = ref<string>("");
@@ -19,7 +21,9 @@ const getQiitaProfile = async (userName: string) => {
   });
 };
 const uploadToIpfs = async () => {
-  const res = await pinJSONToIPFS(qiitaProfile.value).catch(err => {
+  const metaData = formatToMetaData(qiitaProfile.value);
+  console.log(metaData);
+  const res = await pinJSONToIPFS(metaData).catch(err => {
     console.error(err);
   });
   if (res) {
