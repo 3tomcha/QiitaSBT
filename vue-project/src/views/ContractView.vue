@@ -14,7 +14,7 @@ if ((window as any).ethereum) {
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = await provider.getSigner();
   const Contract = await new ethers.Contract(contractAddress, abi, signer) as Contract_abi;
-  const recepientAddress = "0x32a9E70324862ef7BF8bA7610AF701822ddE5364";
+  const recepientAddress = "0x5a10d152072832823c38e964E382CD22C00a8d7E";
   const tokenUri = "https://gateway.pinata.cloud/ipfs/QmTFCG9UPu5gfa2edbXEZVcr6BLu8NLzV14DWCLsedNFUd";
 
   const receipt = await Contract.mintNFT(recepientAddress, tokenUri);
