@@ -27,7 +27,8 @@ const uploadToIpfs = async () => {
     console.error(err);
   });
   if (res) {
-    ipfsUrl.value = res;
+    console.log(res.data.IpfsHash);
+    ipfsUrl.value = "ipfs://" + res.data.IpfsHash;
   }
 }
 const connectAndMint = async () => {
