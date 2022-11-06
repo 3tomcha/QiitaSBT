@@ -1,6 +1,7 @@
 # プロジェクト概要
 「QiitaSBT 〜アウトプット・賞賛をNFTでさらに自慢しちゃおう！Qiitaの情報をもとにNFTを作成、Metamaskに持てます、Openseaで表示できます〜」
-
+URL<br>
+https://3tomcha.github.io/QiitaSBT/
 ## きっかけ
 NFTは、ただ所持するだけでなく、それを自己表現に使うケースが増えてきています。<br>
 私の身の回りでも好きなNFTをTwitterのiconにしたりして、そのNFTが好きな人どうしの会話やコミュニティの形成がされています。<br>
