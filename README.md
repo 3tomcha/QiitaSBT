@@ -31,7 +31,7 @@ https://testnets.opensea.io/ja
 
 ## フォルダ構成
 - contracts<br>
-  - MyNFT.sol<br>
+  - [MyNFT.sol](https://github.com/3tomcha/QiitaSBT/blob/master/contracts/MyNFT.sol)<br>
     スマートコントラクトです。TransferできないSBTを生成します。<br>
     - constructor<br>
       初期化処理です
@@ -47,7 +47,7 @@ https://testnets.opensea.io/ja
 - vue-project<br>
 フロントエンドコードのディレクトリです<br>
   - src<br>
-    - App.vue<br>
+    - [App.vue](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/App.vue)<br>
       メインの処理を行う箇所です
     - composable<br>
       - [use-ipfs.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-ipfs.ts)<br>
