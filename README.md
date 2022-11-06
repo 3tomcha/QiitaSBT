@@ -85,6 +85,7 @@ https://docs.opensea.io/docs/metadata-standards
 ## ローカルでの動作方法
 ```shell
 cd vue-project
+npm install
 npm run dev
 ```
 
