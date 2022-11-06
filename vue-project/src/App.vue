@@ -86,19 +86,20 @@ const submit = async () => {
     </textarea>
     </div>
     <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
-    <p style="margin-top: 24px">トランザクション</p>
-    <a :href="txExplorerURL">{{ txExplorerURL }}</a>
-    <p style="margin-top: 24px">
-      SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
-    </p>
-
-    <textarea disabled class="result">
+    <template v-if="txExplorerURL">
+      <p style="margin-top: 24px">トランザクション</p>
+      <a :href="txExplorerURL">{{ txExplorerURL }}</a>
+      <p style="margin-top: 24px">
+        SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
+      </p>
+      <textarea disabled class="result">
 アドレス:
 {{ contractAddress }}
 
 ID:
-{{ currentTokenId }} 
+{{ Number(currentTokenId) + 1 }} 
       </textarea>
+    </template>
   </main>
   <el-dialog v-model="dialogVisible" title="Succeeded" width="96%">
     <span>NFTに変換できました</span>
