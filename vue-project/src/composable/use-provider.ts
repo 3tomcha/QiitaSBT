@@ -26,6 +26,17 @@ export default function useProvider() {
     }
   }
 
+  const switchEthereumChain = async () => {
+    try {
+      await ethereum.value.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: "0x5" }]
+      })
+    } catch (switchError) {
+      console.log(switchError);
+    }
+  }
+
   const mintNFT = async (tokenUri: string) => {
     const provider = new ethers.providers.Web3Provider(ethereum.value);
     const signer = await provider.getSigner();
@@ -42,6 +53,7 @@ export default function useProvider() {
     ethereum,
     init,
     connectMetamask,
-    mintNFT
+    mintNFT,
+    switchEthereumChain
   }
 }

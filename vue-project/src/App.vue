@@ -9,7 +9,7 @@ import { ElMessage } from "element-plus";
 const { qiitaProfile, getProfile } = useQiita();
 const { ipfsUrl, pinJSONToIPFS } = useIpfs();
 const { formatToMetaData } = useMetaData();
-const { init, connectMetamask, mintNFT } = useProvider();
+const { init, connectMetamask, mintNFT, switchEthereumChain } = useProvider();
 
 const input = ref<string>();
 const dialogVisible = ref<Boolean>();
@@ -41,6 +41,7 @@ const connectAndMint = async () => {
     return ElMessage.error("Metamaskをインストールしてください");
   }
   await connectMetamask();
+  await switchEthereumChain();
   const receipt = await mintNFT(ipfsUrl.value);
   if (receipt) {
     dialogVisible.value = true;
@@ -65,7 +66,7 @@ const submit = async () => {
         <circle cx="216.33" cy="21.4" r="12.28"></circle>
       </svg>をNFTに変換</h1>
     <article>
-      <h2>Qiitaのプロフィール情報をもとにNFTを作成します。（Goerliネットワークを使用）</h2>
+      <h2>Qiitaのプロフィール情報をもとにNFTを作成します。</h2>
     </article>
     <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
     <el-button type="info" class="submit" @click="getQiitaProfile">Submit</el-button>
