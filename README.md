@@ -70,7 +70,11 @@ https://testnets.opensea.io/ja
         QiitaAPIを通して、Qiitaのユーザー名からプロフィールを取得します<br>
 
 ## 工夫した点
-これから書きます
+### SoulBoundTokenの導入
+・ただのERC721ではなく、譲渡不可能なSoulBoundTokenで実装しました。
+### Opensea上でMetadataを見ることができる
+・Metadata Standardsをもとに、Metadataを作成しました
+https://docs.opensea.io/docs/metadata-standards
 
 ## ローカルでの動作方法
 ```shell
