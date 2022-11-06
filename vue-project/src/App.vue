@@ -98,8 +98,11 @@ const submit = async () => {
       </p>
 
       <textarea disabled class="result">
-        アドレス: {{ contractAddress }}
-        ID: {{ currentTokenId }}  
+アドレス:
+{{ contractAddress }}
+
+ID:
+{{ currentTokenId }} 
       </textarea>
     </div>
 
