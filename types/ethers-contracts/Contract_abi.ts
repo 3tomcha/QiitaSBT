@@ -30,6 +30,7 @@ import type {
 export interface Contract_abiInterface extends utils.Interface {
   functions: {
     "approve(address,uint256)": FunctionFragment;
+    "burn(uint256)": FunctionFragment;
     "mintNFT(address,string)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
@@ -38,6 +39,7 @@ export interface Contract_abiInterface extends utils.Interface {
     "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
+    "currentTokenId()": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "name()": FunctionFragment;
@@ -51,6 +53,7 @@ export interface Contract_abiInterface extends utils.Interface {
   getFunction(
     nameOrSignatureOrTopic:
       | "approve"
+      | "burn"
       | "mintNFT"
       | "renounceOwnership"
       | "safeTransferFrom(address,address,uint256)"
@@ -59,6 +62,7 @@ export interface Contract_abiInterface extends utils.Interface {
       | "transferFrom"
       | "transferOwnership"
       | "balanceOf"
+      | "currentTokenId"
       | "getApproved"
       | "isApprovedForAll"
       | "name"
@@ -72,6 +76,10 @@ export interface Contract_abiInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "approve",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "burn",
+    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "mintNFT",
@@ -119,6 +127,10 @@ export interface Contract_abiInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "currentTokenId",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "getApproved",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
@@ -143,6 +155,7 @@ export interface Contract_abiInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "burn", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "mintNFT", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
@@ -169,6 +182,10 @@ export interface Contract_abiInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "currentTokenId",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getApproved",
     data: BytesLike
@@ -281,6 +298,11 @@ export interface Contract_abi extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    burn(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     mintNFT(
       recipient: PromiseOrValue<string>,
       tokenURI: PromiseOrValue<string>,
@@ -329,6 +351,8 @@ export interface Contract_abi extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    currentTokenId(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     getApproved(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -364,6 +388,11 @@ export interface Contract_abi extends BaseContract {
 
   approve(
     to: PromiseOrValue<string>,
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  burn(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -416,6 +445,8 @@ export interface Contract_abi extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  currentTokenId(overrides?: CallOverrides): Promise<BigNumber>;
+
   getApproved(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -451,6 +482,11 @@ export interface Contract_abi extends BaseContract {
   callStatic: {
     approve(
       to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    burn(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -500,6 +536,8 @@ export interface Contract_abi extends BaseContract {
       owner: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    currentTokenId(overrides?: CallOverrides): Promise<BigNumber>;
 
     getApproved(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -585,6 +623,11 @@ export interface Contract_abi extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    burn(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     mintNFT(
       recipient: PromiseOrValue<string>,
       tokenURI: PromiseOrValue<string>,
@@ -632,6 +675,8 @@ export interface Contract_abi extends BaseContract {
       owner: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    currentTokenId(overrides?: CallOverrides): Promise<BigNumber>;
 
     getApproved(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -673,6 +718,11 @@ export interface Contract_abi extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    burn(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     mintNFT(
       recipient: PromiseOrValue<string>,
       tokenURI: PromiseOrValue<string>,
@@ -720,6 +770,8 @@ export interface Contract_abi extends BaseContract {
       owner: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    currentTokenId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getApproved(
       tokenId: PromiseOrValue<BigNumberish>,
