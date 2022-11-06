@@ -13,6 +13,7 @@ const { ipfsUrl, pinJSONToIPFS } = useIpfs();
 const { formatToMetaData } = useMetaData();
 
 const input = ref<string>();
+const dialogVisible = ref<Boolean>();
 
 const getQiitaProfile = async () => {
   const userName = input.value;
@@ -50,6 +51,7 @@ const connectAndMint = async () => {
 
     const receipt = await Contract.mintNFT(recepientAddress, tokenUri);
     console.log(receipt);
+    dialogVisible.value = true;
   }
 }
 const submit = async () => {
@@ -82,6 +84,16 @@ const submit = async () => {
     </div>
     <p class="transform" @click="submit" v-if="qiitaProfile">Transform</p>
   </main>
+  <el-dialog v-model="dialogVisible" title="Succeeded">
+    <span>NFTに変換できました</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false">
+          閉じる
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <style lang="scss">
