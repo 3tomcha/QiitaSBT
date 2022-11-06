@@ -73,14 +73,14 @@ const submit = async () => {
       <h2>Qiitaのプロフィール情報をもとにNFTを作成します。（Goerliネットワークを使用）</h2>
     </article>
     <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
-    <p class="submit" @click="getQiitaProfile">取得！</p>
+    <p class="submit" @click="getQiitaProfile">Submit</p>
     <div v-if="qiitaProfile">
       <p>ユーザーが見つかりました</p>
       <textarea disabled>
       {{ qiitaProfile }}
     </textarea>
     </div>
-    <p class="submit" @click="submit" v-if="qiitaProfile">変換！</p>
+    <p class="transform" @click="submit" v-if="qiitaProfile">Transform</p>
   </main>
 </template>
 
@@ -90,7 +90,12 @@ html {
 }
 
 main {
-  margin-top: 200px;
+  padding: 2%;
+
+  @media screen and (min-width: 900px) {
+    margin-top: 200px;
+  }
+
   display: flex;
   flex-flow: column;
   min-height: 80vh;
@@ -105,10 +110,15 @@ main {
   h1 {
     display: flex;
     align-items: baseline;
-    font-size: 30px;
+    font-size: 26px;
     column-gap: 10px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: white;
   }
 
   input {
@@ -130,7 +140,7 @@ main {
     background: white;
     padding: 10px;
     text-align: center;
-    font-size: 3em;
+    font-size: 26px;
     font-weight: bold;
     font-family: Helvetica, Arial, sans-serif;
     width: 300px;
@@ -139,6 +149,22 @@ main {
     border: 4px solid #a50a23;
     border-radius: 8px;
     color: #a50a23;
+    cursor: pointer;
+  }
+
+  .transform {
+    background: #a50a23;
+    padding: 10px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 4px solid #a50a23;
+    border-radius: 8px;
+    color: white;
     cursor: pointer;
   }
 
