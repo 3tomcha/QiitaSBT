@@ -92,8 +92,8 @@ Solidity, IPFS, TypeScript, Vue3, Ethers.js, Typechain
 
 ## deployしたContract
 ContractAddress<br>
-0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
+0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758<br>
 Etherscan(Goerli)<br>
-https://goerli.etherscan.io/address/0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
+https://goerli.etherscan.io/address/0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758<br>
 Code<br>
-https://github.com/3tomcha/QiitaSBT/blob/master/contracts/MyNFT.sol
+https://github.com/3tomcha/QiitaSBT/blob/master/contracts/MyNFT.sol<br>
