@@ -11,6 +11,20 @@ NFTは、ただ所持するだけでなく、それを自己表現に使うケ�
 これから書きます
 
 ## フォルダ構成
+- contracts<br>
+  - MyNFT.sol<br>
+    スマートコントラクトです<br>
+    ・constructor<br>
+      初期化処理です
+    ・currentTokenId<br>
+      現在のTokenIdを取得します<br>
+    ・mintNFT<br>
+      NFTをmintします<br>
+    ・burn<br>
+      NFTをburnします<br>持ち主しかできないようにしています
+    ・_beforeTokenTransfer<br>
+      NFTをTransferする前の処理です<br>持ち主でもTransferできません
+      
 - vue-project<br>
 フロントエンドコードのディレクトリです<br>
   - src<br>
