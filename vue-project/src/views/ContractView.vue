@@ -6,7 +6,7 @@ import useQiita from "@/composable/use-qiita";
 import { ref } from "vue";
 import useIpfs from "@/composable/use-ipfs";
 import useMetaData from "@/composable/use-metadata";
-import { contractAddress, recepientAddress } from "@/const/contract";
+import { contractAddress } from "@/const/contract";
 
 const { qiitaProfile, getProfile } = useQiita();
 const { ipfsUrl, pinJSONToIPFS } = useIpfs();
@@ -39,15 +39,15 @@ const uploadToIpfs = async () => {
 const connectAndMint = async () => {
   if ((window as any).ethereum) {
     const ethereum = (window as any).ethereum;
-    const acconts = await ethereum.request({ method: "eth_requestAccounts" }).catch(err => {
-      console.error(err);
-    });
+    const acconts = await ethereum.request({ method: "eth_requestAccounts" });
     console.log(acconts);
 
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = await provider.getSigner();
+
     const Contract = await new ethers.Contract(contractAddress, abi, signer) as Contract_abi;
     const tokenUri = ipfsUrl.value;
+    const recepientAddress = acconts[0];
 
     const receipt = await Contract.mintNFT(recepientAddress, tokenUri);
     console.log(receipt);
