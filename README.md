@@ -73,8 +73,10 @@ https://testnets.opensea.io/ja
 ### SoulBoundTokenの導入
 ・ただのERC721ではなく、譲渡不可能なSoulBoundTokenで実装しました。
 ### Opensea上でMetadataを見ることができる
-・Metadata Standardsをもとに、Metadataを作成しました
+・Metadata Standardsをもとに、Metadataを作成しました<br>
 https://docs.opensea.io/docs/metadata-standards
+### MetadataはIPFSに保存
+・MetadataはIPFSに保存し、NFTのTokenURIは、中央集権サーバーのURLではなく、"ipfs://"で始まるURIを保存しています。
 
 ## ローカルでの動作方法
 ```shell
