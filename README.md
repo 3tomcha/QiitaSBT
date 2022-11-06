@@ -95,3 +95,5 @@ ContractAddress<br>
 0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
 Etherscan(Goerli)<br>
 https://goerli.etherscan.io/address/0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
+Code<br>
+https://github.com/3tomcha/QiitaSBT/blob/master/contracts/MyNFT.sol
