@@ -6,16 +6,16 @@ import useMetaData from "@/composable/use-metadata";
 import useProvider from "@/composable/use-provider";
 import { ElMessage } from "element-plus";
 import type { TxReceipt } from "@/types/types";
+import { contractAddress } from "@/const/contract";
 
 const { qiitaProfile, getProfile } = useQiita();
 const { ipfsUrl, pinJSONToIPFS } = useIpfs();
 const { formatToMetaData } = useMetaData();
-const { init, connectMetamask, mintNFT, switchEthereumChain } = useProvider();
+const { init, connectMetamask, mintNFT, switchEthereumChain, currentTokenId } = useProvider();
 
 const input = ref<string>();
 const dialogVisible = ref<Boolean>();
 const txReceipt = ref<TxReceipt>();
-// const txExplorerURL = ref<string>();
 
 const getQiitaProfile = async () => {
   const userName = input.value;
@@ -86,6 +86,18 @@ const submit = async () => {
     </textarea>
     </div>
     <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
+    <div v-if="txExplorerURL">
+      <a :href="txExplorerURL">{{ txExplorerURL }}</a>
+      <p>
+        SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
+      </p>
+      <textarea disabled>
+        アドレス:
+        {{ contractAddress }}
+        ID:
+        {{ currentTokenId }}  
+      </textarea>
+    </div>
   </main>
   <el-dialog v-model="dialogVisible" title="Succeeded">
     <span>NFTに変換できました</span>

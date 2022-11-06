@@ -2,12 +2,13 @@ import { ref } from "vue";
 import { ElMessage } from "element-plus";
 import { ethers } from "ethers";
 import { contractAddress } from "@/const/contract";
-import abi from "types/ethers-contracts/Contract_abi";
-import type { Contract_abi } from "@/types/ethers-contracts/index";
+import abi from "@/abi/contract_abi.json";
+import type { Contract_abi } from "@/types/ethers-contracts/Contract_abi";
 
 export default function useProvider() {
   const accounts = ref<any>();
   const ethereum = ref<any>();
+  const currentTokenId = ref<number>();
 
   const init = () => {
     if ((window as any).ethereum) {
@@ -45,11 +46,17 @@ export default function useProvider() {
     const receipt = await contract.mintNFT(recepientAddress, tokenUri).catch(err => {
       console.error(err);
     })
+    await getCurrentTokenId(contract);
     return receipt;
   }
 
   const getCurrentTokenId = async (contract: Contract_abi) => {
-    await contract.curre
+    const res = await contract.currentTokenId().catch(err => {
+      console.error(err);
+    });
+    if (res) {
+      currentTokenId.value = res.toNumber();
+    }
   }
 
   return {
@@ -57,6 +64,7 @@ export default function useProvider() {
     init,
     connectMetamask,
     mintNFT,
-    switchEthereumChain
+    switchEthereumChain,
+    currentTokenId
   }
 }
