@@ -136,7 +136,7 @@ main {
   row-gap: 8px;
 
   svg {
-    height: 60px;
+    height: 46px;
   }
 
   h1 {
