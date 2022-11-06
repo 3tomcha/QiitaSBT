@@ -56,15 +56,15 @@ https://testnets.opensea.io/ja
         QiitaAPIから返ってくるJSONの型を、OpenseaのMetaDataの型に変換します<br>
       - [use-provider.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-provider.ts)<br>
         Metamaskやスマートコントラクトが関係する処理です<br>
-        ・init<br>
+        - init<br>
           初期化の処理です<br>
-        ・connectMetamask<br>
+        - connectMetamask<br>
           メタマスクに接続します<br>
-        ・switchEthereumChain<br>
+        - switchEthereumChain<br>
           別のネットワークidに繋げてしまっている場合に、Goerliネットワークに変更します<br>
-        ・mintNFT<br>
+        - mintNFT<br>
           tokenURIをもとにNFTをmintします<br>
-        ・getCurrentTokenId<br>
+        - getCurrentTokenId<br>
           現在のトークンIDを取得します<br>
       - [use-qiita.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-qiita.ts)<br>
         QiitaAPIを通して、Qiitaのユーザー名からプロフィールを取得します<br>
