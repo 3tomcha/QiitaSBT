@@ -104,7 +104,7 @@ ID:
   <el-dialog v-model="dialogVisible" title="Succeeded" width="96%">
     <span>NFTに変換できました</span>
     <p>{{ txReceipt }}</p>
-    <p>トランザクション</p>
+    <p style="margin-top: 16px">トランザクション</p>
     <a :href="txExplorerURL">{{ txExplorerURL }}</a>
     <template #footer>
       <span class="dialog-footer">
@@ -229,8 +229,9 @@ main {
     background: white !important;
   }
 
-  input {
-    opacity: 1;
+  input,
+  textarea {
+    opacity: 1 !important;
   }
 
   .success {
