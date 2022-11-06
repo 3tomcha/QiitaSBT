@@ -13,7 +13,7 @@ NFTは、ただ所持するだけでなく、それを自己表現に使うケ�
 ## フォルダ構成
 - vue-project/src/App.vue
 メインの処理を行う箇所です
-- [vue-project/src/composable/use-ipfs.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-ipfs.ts). 
+- [vue-project/src/composable/use-ipfs.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-ipfs.ts)<br>
 pinataAPIを通して、JSONデータをIPFSにアップします
 - vue-project/src/composable/use-metadata.ts
 QiitaAPIから返ってくるAPIの型を、OpenseaのMetaDataの型に変換します
