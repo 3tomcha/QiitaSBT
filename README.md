@@ -57,15 +57,15 @@ https://testnets.opensea.io/ja
       - [use-provider.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-provider.ts)<br>
         Metamaskやスマートコントラクトが関係する処理です<br>
         ・init<br>
-            初期化の処理です<br>
+          初期化の処理です<br>
         ・connectMetamask<br>
-            メタマスクに接続します<br>
+          メタマスクに接続します<br>
         ・switchEthereumChain<br>
-            別のネットワークidに繋げてしまっている場合に、Goerliネットワークに変更します<br>
+          別のネットワークidに繋げてしまっている場合に、Goerliネットワークに変更します<br>
         ・mintNFT<br>
-            tokenURIをもとにNFTをmintします<br>
+          tokenURIをもとにNFTをmintします<br>
         ・getCurrentTokenId<br>
-            現在のトークンIDを取得します<br>
+          現在のトークンIDを取得します<br>
       - [use-qiita.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-qiita.ts)<br>
         QiitaAPIを通して、Qiitaのユーザー名からプロフィールを取得します<br>
 
