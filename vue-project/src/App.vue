@@ -75,14 +75,14 @@ const submit = async () => {
       <h2>Qiitaのプロフィール情報をもとにNFTを作成します。（Goerliネットワークを使用）</h2>
     </article>
     <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
-    <p class="submit" @click="getQiitaProfile">Submit</p>
-    <div v-if="qiitaProfile">
+    <el-button type="info" class="submit" @click="getQiitaProfile">Submit</el-button>
+    <div v-if="qiitaProfile" class="profile">
       <p>ユーザーが見つかりました</p>
       <textarea disabled>
       {{ qiitaProfile }}
     </textarea>
     </div>
-    <p class="transform" @click="submit" v-if="qiitaProfile">Transform</p>
+    <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
   </main>
   <el-dialog v-model="dialogVisible" title="Succeeded">
     <span>NFTに変換できました</span>
@@ -103,17 +103,13 @@ html {
 
 main {
   padding: 2%;
-
-  @media screen and (min-width: 900px) {
-    margin-top: 200px;
-  }
-
   display: flex;
   flex-flow: column;
   min-height: 80vh;
   justify-content: flex-start;
   margin-left: auto;
   margin-right: auto;
+  row-gap: 8px;
 
   svg {
     height: 60px;
@@ -142,15 +138,12 @@ main {
     border: 2px solid white;
     transition: all 0.3s;
     padding: 13px;
-    margin-bottom: 15px;
     width: 100%;
     box-sizing: border-box;
     outline: 0;
   }
 
   .submit {
-    background: white;
-    padding: 10px;
     text-align: center;
     font-size: 26px;
     font-weight: bold;
@@ -158,15 +151,12 @@ main {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    border: 4px solid #a50a23;
     border-radius: 8px;
-    color: #a50a23;
-    cursor: pointer;
+    height: 2em;
+    margin-top: 8px;
   }
 
   .transform {
-    background: #a50a23;
-    padding: 10px;
     text-align: center;
     font-size: 26px;
     font-weight: bold;
@@ -174,10 +164,9 @@ main {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    border: 4px solid #a50a23;
     border-radius: 8px;
-    color: white;
-    cursor: pointer;
+    height: 2em;
+    margin-top: 8px;
   }
 
   textarea {
@@ -185,6 +174,15 @@ main {
     background: white;
     border-radius: 8px;
     width: 100%;
+  }
+
+  input,
+  textarea {
+    -webkit-appearance: none;
+  }
+
+  .profile {
+    margin-top: 20px;
   }
 
   @media screen and (min-width: 1300px) {
