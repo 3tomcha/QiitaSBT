@@ -1,6 +1,8 @@
 import axios from "axios";
+import { ref } from "vue";
 
 export default function useIpfs() {
+    const ipfsUrl = ref<string>("");
 
     const pinJSONToIPFS = async (content: Object) => {
         const data = JSON.stringify({
@@ -32,11 +34,12 @@ export default function useIpfs() {
         });
         if (res) {
             console.log(res);
-            return res;
+            ipfsUrl.value = "ipfs://" + res.data.IpfsHash
         }
     }
 
     return {
+        ipfsUrl,
         pinJSONToIPFS
     }
 }

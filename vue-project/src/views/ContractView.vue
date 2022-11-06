@@ -8,29 +8,33 @@ import useIpfs from "@/composable/use-ipfs";
 import useMetaData from "@/composable/use-metadata";
 import { contractAddress, recepientAddress } from "@/const/contract";
 
-const { getProfile } = useQiita();
-const { pinJSONToIPFS } = useIpfs();
+const { qiitaProfile, getProfile } = useQiita();
+const { ipfsUrl, pinJSONToIPFS } = useIpfs();
 const { formatToMetaData } = useMetaData();
 
-const qiitaProfile = ref<any>();
-const ipfsUrl = ref<string>("");
+const input = ref<string>();
 
-const getQiitaProfile = async (userName: string) => {
-  qiitaProfile.value = await getProfile(userName).catch(err => {
+const getQiitaProfile = async () => {
+  const userName = input.value;
+  if (!userName) {
+    alert("ユーザー名が入力されていません。");
+    return;
+  }
+  await getProfile(userName).catch(err => {
     console.error(err);
   });
 };
+
 const uploadToIpfs = async () => {
-  const metaData = formatToMetaData(qiitaProfile.value);
-  console.log(metaData);
-  const res = await pinJSONToIPFS(metaData).catch(err => {
-    console.error(err);
-  });
-  if (res) {
-    console.log(res.data.IpfsHash);
-    ipfsUrl.value = "ipfs://" + res.data.IpfsHash;
+  if (qiitaProfile.value) {
+    const metaData = formatToMetaData(qiitaProfile.value);
+    console.log(metaData);
+    const res = await pinJSONToIPFS(metaData).catch(err => {
+      console.error(err);
+    });
   }
 }
+
 const connectAndMint = async () => {
   if ((window as any).ethereum) {
     const ethereum = (window as any).ethereum;
@@ -46,18 +50,17 @@ const connectAndMint = async () => {
 
     const receipt = await Contract.mintNFT(recepientAddress, tokenUri);
     console.log(receipt);
-
-    // const name = await Contract.name().catch(err => {
-    //   console.error(err);
-    // });
   }
+}
+const submit = async () => {
+  await uploadToIpfs();
+  await connectAndMint();
 }
 </script>
 
 
 <template>
   <main>
-    {{ qiitaProfile }}
     <h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 426.57 130" fill="white">
         <circle cx="167.08" cy="21.4" r="12.28"></circle>
         <path d="M250.81 29.66h23.48v18.9h-23.48z"></path>
@@ -69,11 +72,15 @@ const connectAndMint = async () => {
     <article>
       <h2>Qiitaのプロフィール情報をもとにNFTを作成します。（Goerliネットワークを使用）</h2>
     </article>
-    <input type="text" placeholder="Qiitaのユーザーid" />
-    <p class="submit">SUBMIT</p>
-    <button @click="connectAndMint">connectAndMint</button>
-    <button @click="getQiitaProfile('3tomcha')">getName</button>
-    <button @click="uploadToIpfs">uploadToIpfs</button>
+    <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
+    <p class="submit" @click="getQiitaProfile">取得！</p>
+    <div v-if="qiitaProfile">
+      <p>ユーザーが見つかりました</p>
+      <textarea disabled>
+      {{ qiitaProfile }}
+    </textarea>
+    </div>
+    <p class="submit" @click="submit" v-if="qiitaProfile">変換！</p>
   </main>
 </template>
 
@@ -105,7 +112,6 @@ main {
   }
 
   input {
-    color: white;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: 18px;
@@ -133,6 +139,14 @@ main {
     border: 4px solid #a50a23;
     border-radius: 8px;
     color: #a50a23;
+    cursor: pointer;
+  }
+
+  textarea {
+    height: 35em;
+    background: white;
+    border-radius: 8px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1300px) {
