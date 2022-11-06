@@ -16,3 +16,7 @@ export type QiitaMetaData = {
     twitter_screen_name: String,
     website_url: String
 }
+
+export type TxReceipt = {
+    hash: string
+}

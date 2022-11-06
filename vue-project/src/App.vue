@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import useQiita from "@/composable/use-qiita";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import useIpfs from "@/composable/use-ipfs";
 import useMetaData from "@/composable/use-metadata";
 import useProvider from "@/composable/use-provider";
 import { ElMessage } from "element-plus";
+import type { TxReceipt } from "@/types/types";
 
 const { qiitaProfile, getProfile } = useQiita();
 const { ipfsUrl, pinJSONToIPFS } = useIpfs();
@@ -13,6 +14,8 @@ const { init, connectMetamask, mintNFT, switchEthereumChain } = useProvider();
 
 const input = ref<string>();
 const dialogVisible = ref<Boolean>();
+const txReceipt = ref<TxReceipt>();
+// const txExplorerURL = ref<string>();
 
 const getQiitaProfile = async () => {
   const userName = input.value;
@@ -44,9 +47,15 @@ const connectAndMint = async () => {
   await switchEthereumChain();
   const receipt = await mintNFT(ipfsUrl.value);
   if (receipt) {
+    console.log(receipt);
     dialogVisible.value = true;
+    txReceipt.value = receipt;
   }
 }
+
+const txExplorerURL = computed(() =>
+  txReceipt.value ? `https://goerli.etherscan.io/tx/${txReceipt.value.hash} ` : ""
+)
 
 const submit = async () => {
   await uploadToIpfs();
@@ -80,6 +89,8 @@ const submit = async () => {
   </main>
   <el-dialog v-model="dialogVisible" title="Succeeded">
     <span>NFTに変換できました</span>
+    <p>{{ txReceipt }}</p>
+    <a :href="txExplorerURL">{{ txExplorerURL }}</a>
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false">
