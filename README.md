@@ -78,7 +78,6 @@ cd vue-project
 npm run dev
 ```
 
-
 ## 使用したtech stacks
 Solidity, IPFS, TypeScript, Vue3, Ethers.js, Typechain
 
@@ -86,13 +85,7 @@ Solidity, IPFS, TypeScript, Vue3, Ethers.js, Typechain
 イーサリアム（Goerli）
 
 ## deployしたContract
-ContractAddress
-0xbA3E9C379eAB31f1F98dD9Bf0d78faFe5b2Fe890
-エクスプローラーへのリンク
-
-## application codeやその他のfile
-srcフォルダ内にあります
-
-## テスト手順を含むリポジトリへのリンク
-
-## 審査やテストのためにプロジェクトにアクセスする方法など
+ContractAddress<br>
+0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
+Etherscan(Goerli)<br>
+https://goerli.etherscan.io/address/0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
