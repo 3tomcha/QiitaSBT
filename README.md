@@ -23,7 +23,11 @@ https://3tomcha.github.io/QiitaSBT/
 <img width="1440" alt="スクリーンショット 2022-11-06 17 27 21" src="https://user-images.githubusercontent.com/15997287/200161483-0666359b-aa56-4f9d-ac71-26c24c8de037.png">
 - Dialogを閉じると、コントラクトアドレスとトークンIDを見ることができます。それらを、SP版のMetamaskのNFTをインポートから入力するとNFTを見ることができます。<br>
 <img width="1440" alt="スクリーンショット 2022-11-06 17 27 32" src="https://user-images.githubusercontent.com/15997287/200161526-70192747-709c-49cc-9925-5c28ae7bdc33.png">
-
+- TestNet版Openseaに、SP版のMetamaskを接続すると、詳細な属性値を見ることができます<br>
+https://testnets.opensea.io/ja
+<div>
+<video src="https://user-images.githubusercontent.com/15997287/200162792-665fcbb3-85d4-422c-80d8-0b74a7db6328.mov"><br>
+</div>
 
 ## フォルダ構成
 - contracts<br>
@@ -74,7 +78,6 @@ cd vue-project
 npm run dev
 ```
 
-
 ## 使用したtech stacks
 Solidity, IPFS, TypeScript, Vue3, Ethers.js, Typechain
 
@@ -82,13 +85,7 @@ Solidity, IPFS, TypeScript, Vue3, Ethers.js, Typechain
 イーサリアム（Goerli）
 
 ## deployしたContract
-ContractAddress
-0xbA3E9C379eAB31f1F98dD9Bf0d78faFe5b2Fe890
-エクスプローラーへのリンク
-
-## application codeやその他のfile
-srcフォルダ内にあります
-
-## テスト手順を含むリポジトリへのリンク
-
-## 審査やテストのためにプロジェクトにアクセスする方法など
+ContractAddress<br>
+0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
+Etherscan(Goerli)<br>
+https://goerli.etherscan.io/address/0xbA6268EeBC71c9b110cDF3929637f8a39Eb3A758
