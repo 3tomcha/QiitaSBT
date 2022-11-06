@@ -15,13 +15,13 @@ SP: Metamaskブラウザ最新版<br>
 https://3tomcha.github.io/QiitaSBT/
 - Qiitaのユーザーidを入力します<br>
 <img width="1440" alt="スクリーンショット 2022-11-06 17 26 38" src="https://user-images.githubusercontent.com/15997287/200161316-aa3b3adf-4518-4261-9a5c-1baa79df6585.png"><br>
-- ユーザーが見つかるとプロフィール情報が表示されます。Transformボタンをクリックします<br>
+- ユーザーが見つかるとプロフィール情報が表示されます。<br>Transformボタンをクリックします<br>
 <img width="1440" alt="スクリーンショット 2022-11-06 17 26 54" src="https://user-images.githubusercontent.com/15997287/200161334-8c577000-60ed-4b5b-8f1c-81ae231ad6cb.png"><br>
-- Metamaskが反応します。確認ボタンをクリック、その後、承認をクリックします<br>
+- Metamaskが反応します。<br>確認ボタンをクリックします。
 <img width="1439" alt="スクリーンショット 2022-11-06 17 27 11" src="https://user-images.githubusercontent.com/15997287/200161382-14e2f374-358f-417d-9180-840c26c5e06a.png">
-- 成功するとメッセージが表示されます。リンクをクリックするとEtherscanへとびます<br>
+- 成功するとメッセージが表示されます。<br>リンクをクリックするとEtherscanへとびます<br>
 <img width="1440" alt="スクリーンショット 2022-11-06 17 27 21" src="https://user-images.githubusercontent.com/15997287/200161483-0666359b-aa56-4f9d-ac71-26c24c8de037.png">
-- Dialogを閉じると、コントラクトアドレスとトークンIDを見ることができます。それらを、SP版のMetamaskのNFTをインポートから入力するとNFTを見ることができます。<br>
+- Dialogを閉じると、コントラクトアドレスとトークンIDを見ることができます。<br>それらを、SP版のMetamaskのNFTをインポートから入力するとNFTを見ることができます。<br>
 <img width="1440" alt="スクリーンショット 2022-11-06 17 27 32" src="https://user-images.githubusercontent.com/15997287/200161526-70192747-709c-49cc-9925-5c28ae7bdc33.png">
 - TestNet版Openseaに、SP版のMetamaskを接続すると、詳細な属性値を見ることができます<br>
 https://testnets.opensea.io/ja
