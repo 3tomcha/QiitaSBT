@@ -17,17 +17,12 @@ contract MyNFT is Ownable, ERC721URIStorage {
         return _tokenIds.current();
     }
 
-    function mintNFT(address recipient, string memory tokenURI)
-        public
-        returns (uint256)
-    {
+    function mintNFT(address recipient, string memory tokenURI) public {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _mint(recipient, newItemId);
         _setTokenURI(newItemId, tokenURI);
-
-        return newItemId;
     }
 
     function burn(uint256 tokenId) external {
