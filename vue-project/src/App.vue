@@ -77,35 +77,28 @@ const submit = async () => {
     <article>
       <h2>Qiitaのプロフィール情報をもとにNFTを作成します。</h2>
     </article>
-
-    <template v-if="!txExplorerURL">
-      <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
-      <el-button type="info" class="submit" plain @click="getQiitaProfile">Submit</el-button>
-      <div v-if="qiitaProfile" class="profile">
-        <p>ユーザーが見つかりました</p>
-        <textarea disabled class="result">
+    <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
+    <el-button type="info" class="submit" plain @click="getQiitaProfile">Submit</el-button>
+    <div v-if="qiitaProfile" class="profile">
+      <p>ユーザーが見つかりました</p>
+      <textarea disabled class="result">
       {{ qiitaProfile }}
     </textarea>
-      </div>
-      <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
-    </template>
+    </div>
+    <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
+    <p style="margin-top: 24px">トランザクション</p>
+    <a :href="txExplorerURL">{{ txExplorerURL }}</a>
+    <p style="margin-top: 24px">
+      SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
+    </p>
 
-    <div v-if="txExplorerURL">
-      <p>トランザクション</p>
-      <a :href="txExplorerURL">{{ txExplorerURL }}</a>
-      <p>
-        SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
-      </p>
-
-      <textarea disabled class="result">
+    <textarea disabled class="result">
 アドレス:
 {{ contractAddress }}
 
 ID:
 {{ currentTokenId }} 
       </textarea>
-    </div>
-
   </main>
   <el-dialog v-model="dialogVisible" title="Succeeded" width="96%">
     <span>NFTに変換できました</span>
@@ -125,6 +118,10 @@ ID:
 <style lang="scss">
 html {
   background-color: #55c500;
+}
+
+p {
+  margin: 0;
 }
 
 main {
@@ -224,6 +221,7 @@ main {
 
   .result {
     background: white;
+    margin-top: 16px;
   }
 
   textarea:disabled {
@@ -232,6 +230,10 @@ main {
 
   input {
     opacity: 1;
+  }
+
+  .success {
+    color: white;
   }
 }
 </style>
