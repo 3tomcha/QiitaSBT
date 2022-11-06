@@ -1,5 +1,5 @@
 # プロジェクト概要
-「QiitaSBT 〜アウトプット・賞賛をNFTでさらに自慢しちゃおう！Qiitaの情報をもとにNFTを作成、Metamaskに持てます、Openseaで表示できます〜」
+「QiitaSBT 〜アウトプット・賞賛をNFTでさらに自慢しちゃおう！Qiitaの情報をもとにNFTを作成、Metamaskに持てます、Openseaで表示できます〜」<br>
 URL<br>
 https://3tomcha.github.io/QiitaSBT/
 ## きっかけ
