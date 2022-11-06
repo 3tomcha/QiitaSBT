@@ -11,6 +11,10 @@ NFTは、ただ所持するだけでなく、それを自己表現に使うケ�
 PC: Chrome最新版<br>
 SP: Metamaskブラウザ最新版<br>
 
+## 動作前提
+- Metamaskがインストールされていること
+- Goerli ETH をウォレットに持っていること
+
 ## 使い方
 https://3tomcha.github.io/QiitaSBT/
 - Qiitaのユーザーidを入力します<br>
