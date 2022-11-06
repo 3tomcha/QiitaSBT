@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { ElMessage } from "element-plus";
 import { ethers } from "ethers";
 import { contractAddress } from "@/const/contract";
-import abi from "@/abi/contract_abi.json";
+import abi from "types/ethers-contracts/Contract_abi";
 import type { Contract_abi } from "@/types/ethers-contracts/index";
 
 export default function useProvider() {
@@ -46,7 +46,10 @@ export default function useProvider() {
       console.error(err);
     })
     return receipt;
+  }
 
+  const getCurrentTokenId = async (contract: Contract_abi) => {
+    await contract.curre
   }
 
   return {
