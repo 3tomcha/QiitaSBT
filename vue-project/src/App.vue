@@ -220,5 +220,10 @@ main {
   textarea:disabled {
     background: white !important;
   }
+
+  input {
+    -webkit-text-fill-color: white;
+    opacity: 1;
+  }
 }
 </style>
