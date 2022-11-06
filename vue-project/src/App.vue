@@ -77,32 +77,37 @@ const submit = async () => {
     <article>
       <h2>Qiitaのプロフィール情報をもとにNFTを作成します。</h2>
     </article>
-    <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
-    <el-button type="info" class="submit" @click="getQiitaProfile">Submit</el-button>
-    <div v-if="qiitaProfile" class="profile">
-      <p>ユーザーが見つかりました</p>
-      <textarea disabled class="result">
+
+    <template v-if="!txExplorerURL">
+      <input type="text" placeholder="Qiitaのユーザーid" v-model="input" />
+      <el-button type="info" class="submit" plain @click="getQiitaProfile">Submit</el-button>
+      <div v-if="qiitaProfile" class="profile">
+        <p>ユーザーが見つかりました</p>
+        <textarea disabled class="result">
       {{ qiitaProfile }}
     </textarea>
-    </div>
-    <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
+      </div>
+      <el-button type="danger" class="transform" @click="submit" v-if="qiitaProfile">Transform</el-button>
+    </template>
+
     <div v-if="txExplorerURL">
+      <p>トランザクション</p>
       <a :href="txExplorerURL">{{ txExplorerURL }}</a>
       <p>
         SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
       </p>
 
       <textarea disabled class="result">
-        アドレス:
-        {{ contractAddress }}
-        ID:
-        {{ currentTokenId }}  
+        アドレス: {{ contractAddress }}
+        ID: {{ currentTokenId }}  
       </textarea>
     </div>
+
   </main>
-  <el-dialog v-model="dialogVisible" title="Succeeded">
+  <el-dialog v-model="dialogVisible" title="Succeeded" width="96%">
     <span>NFTに変換できました</span>
     <p>{{ txReceipt }}</p>
+    <p>トランザクション</p>
     <a :href="txExplorerURL">{{ txExplorerURL }}</a>
     <template #footer>
       <span class="dialog-footer">
@@ -172,6 +177,7 @@ main {
     border-radius: 8px;
     height: 2em;
     margin-top: 8px;
+    border: 3px solid;
   }
 
   .transform {
@@ -222,7 +228,6 @@ main {
   }
 
   input {
-    -webkit-text-fill-color: white;
     opacity: 1;
   }
 }
