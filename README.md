@@ -13,7 +13,7 @@ NFTは、ただ所持するだけでなく、それを自己表現に使うケ�
 ## フォルダ構成
 - contracts<br>
   - MyNFT.sol<br>
-    スマートコントラクトです<br>
+    スマートコントラクトです。TransferできないSBTを生成します。<br>
     - constructor<br>
       初期化処理です
     - currentTokenId<br>
