@@ -17,25 +17,24 @@ NFTは、ただ所持するだけでなく、それを自己表現に使うケ�
     - App.vue<br>
       メインの処理を行う箇所です
     - composable<br>
-      - [composable/use-ipfs.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-ipfs.ts)
-        pinataAPIを通して、JSONデータをIPFSにアップします
-
-- vue-project/src/composable/use-metadata.ts
-QiitaAPIから返ってくるAPIの型を、OpenseaのMetaDataの型に変換します
-- vue-project/src/composable/use-provider.ts 
-Metamaskやスマートコントラクトが関係する処理です
-・init 
-初期化の処理です
-・connectMetamask
-メタマスクに接続します
-・switchEthereumChain
-別のネットワークidに繋げてしまっている場合に、Goerliネットワークに変更します
-・mintNFT
-tokenURIをもとにNFTをmintします
-・getCurrentTokenId
-現在のトークンIDを取得します
-- vue-project/src/composable/use-qiita.ts 
-QiitaAPIを通して、Qiitaのユーザー名からプロフィールを取得します
+      - [use-ipfs.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-ipfs.ts)<br>
+        pinataAPIを通して、JSONデータをIPFSにアップします<br>
+      - [use-metadata.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-metadata.ts)<br>
+        QiitaAPIから返ってくるJSONの型を、OpenseaのMetaDataの型に変換します<br>
+      - [use-provider.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-provider.ts)<br>
+        Metamaskやスマートコントラクトが関係する処理です<br>
+        ・init<br>
+        初期化の処理です<br>
+        ・connectMetamask<br>
+        メタマスクに接続します<br>
+        ・switchEthereumChain<br>
+        別のネットワークidに繋げてしまっている場合に、Goerliネットワークに変更します<br>
+        ・mintNFT<br>
+        tokenURIをもとにNFTをmintします<br>
+        ・getCurrentTokenId<br>
+        現在のトークンIDを取得します<br>
+      - [use-qiita.ts](https://github.com/3tomcha/QiitaSBT/blob/master/vue-project/src/composable/use-qiita.ts)<br>
+        QiitaAPIを通して、Qiitaのユーザー名からプロフィールを取得します<br>
 
 ## 工夫した点
 これから書きます
