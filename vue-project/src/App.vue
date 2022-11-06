@@ -81,7 +81,7 @@ const submit = async () => {
     <el-button type="info" class="submit" @click="getQiitaProfile">Submit</el-button>
     <div v-if="qiitaProfile" class="profile">
       <p>ユーザーが見つかりました</p>
-      <textarea disabled>
+      <textarea disabled class="result">
       {{ qiitaProfile }}
     </textarea>
     </div>
@@ -91,7 +91,8 @@ const submit = async () => {
       <p>
         SP版のMetamaskのNFTをインポートから下記の内容を入力すると、トークンをみることができます
       </p>
-      <textarea disabled>
+
+      <textarea disabled class="result">
         アドレス:
         {{ contractAddress }}
         ID:
@@ -191,6 +192,7 @@ main {
     background: white;
     border-radius: 8px;
     width: 100%;
+    box-sizing: border-box;
   }
 
   input,
@@ -204,6 +206,19 @@ main {
 
   @media screen and (min-width: 1300px) {
     width: 1080px;
+  }
+
+  a {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  .result {
+    background: white;
+  }
+
+  textarea:disabled {
+    background: white !important;
   }
 }
 </style>
